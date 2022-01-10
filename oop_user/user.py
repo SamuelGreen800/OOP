@@ -9,13 +9,14 @@ class User:
     
     def deposit(self, amount):
         self.account_balance += amount
+        return self
     
     def withdrawl(self, amount):
         self.account_balance -= amount
-    
+        return self
     def balance(self):
         print(f"{self.name} --- {self.account_balance}")
-    
+        return self
     def transfer(self, amount, user):
         self.account_balance -= amount
         user.account_balance += amount
@@ -30,22 +31,11 @@ Butters.name = "Butters"
 Monty = User()
 Monty.name = "Monty"
 
-Sam.deposit(100)
-Sam.deposit(40)
-Sam.deposit(20)
-Sam.withdrawl(80)
-Sam.balance()
+Sam.deposit(100).deposit(40).deposit(20).withdrawl(80).balance()
 
-Butters.deposit(200)
-Butters.deposit(100)
-Butters.withdrawl(50)
-Butters.withdrawl(50)
-Butters.balance()
 
-Monty.deposit(300)
-Monty.withdrawl(100)
-Monty.withdrawl(100)
-Monty.withdrawl(20)
-Monty.balance()
+Butters.deposit(200).deposit(100).withdrawl(50).withdrawl(50).balance()
+
+Monty.deposit(300).withdrawl(100).withdrawl(100).withdrawl(20).balance()
 
 Monty.transfer(50, Sam)
